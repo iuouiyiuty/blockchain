@@ -1413,7 +1413,7 @@ type FutureGetBalanceResult chan *response
 
 // Receive waits for the response promised by the future and returns the
 // available balance from the server for the specified account.
-func (r FutureGetBalanceResult) Receive() (btcutil.Amount, error) {
+func (r FutureGetBalanceResult) Receive() (float64, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
 		return 0, err
@@ -1426,12 +1426,7 @@ func (r FutureGetBalanceResult) Receive() (btcutil.Amount, error) {
 		return 0, err
 	}
 
-	amount, err := btcutil.NewAmount(balance)
-	if err != nil {
-		return 0, err
-	}
-
-	return amount, nil
+	return balance, nil
 }
 
 // FutureGetBalanceParseResult is same as FutureGetBalanceResult except
@@ -1442,7 +1437,7 @@ type FutureGetBalanceParseResult chan *response
 
 // Receive waits for the response promised by the future and returns the
 // available balance from the server for the specified account.
-func (r FutureGetBalanceParseResult) Receive() (btcutil.Amount, error) {
+func (r FutureGetBalanceParseResult) Receive() (float64, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
 		return 0, err
@@ -1459,12 +1454,8 @@ func (r FutureGetBalanceParseResult) Receive() (btcutil.Amount, error) {
 	if err != nil {
 		return 0, err
 	}
-	amount, err := btcutil.NewAmount(balance)
-	if err != nil {
-		return 0, err
-	}
 
-	return amount, nil
+	return balance, nil
 }
 
 // GetBalanceAsync returns an instance of a type that can be used to get the
@@ -1482,7 +1473,7 @@ func (c *Client) GetBalanceAsync(account string) FutureGetBalanceResult {
 // be "*" for all accounts.
 //
 // See GetBalanceMinConf to override the minimum number of confirmations.
-func (c *Client) GetBalance(account string) (btcutil.Amount, error) {
+func (c *Client) GetBalance(account string) (float64, error) {
 	return c.GetBalanceAsync(account).Receive()
 }
 
@@ -1501,7 +1492,7 @@ func (c *Client) GetBalanceMinConfAsync(account string, minConfirms int) FutureG
 // account may be "*" for all accounts.
 //
 // See GetBalance to use the default minimum number of confirmations.
-func (c *Client) GetBalanceMinConf(account string, minConfirms int) (btcutil.Amount, error) {
+func (c *Client) GetBalanceMinConf(account string, minConfirms int) (float64, error) {
 	if c.config.EnableBCInfoHacks {
 		response := c.GetBalanceMinConfAsync(account, minConfirms)
 		return FutureGetBalanceParseResult(response).Receive()
