@@ -989,20 +989,21 @@ type FutureGetAccountAddressResult chan *response
 
 // Receive waits for the response promised by the future and returns the current
 // Bitcoin address for receiving payments to the specified account.
-func (r FutureGetAccountAddressResult) Receive() (btcutil.Address, error) {
+func (r FutureGetAccountAddressResult) Receive() (string, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
 	// Unmarshal result as a string.
 	var addr string
 	err = json.Unmarshal(res, &addr)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
+	return addr, nil
 
-	return btcutil.DecodeAddress(addr, &chaincfg.MainNetParams)
+	//return btcutil.DecodeAddress(addr, &chaincfg.MainNetParams)
 }
 
 // GetAccountAddressAsync returns an instance of a type that can be used to get
@@ -1017,7 +1018,7 @@ func (c *Client) GetAccountAddressAsync(account string) FutureGetAccountAddressR
 
 // GetAccountAddress returns the current Bitcoin address for receiving payments
 // to the specified account.
-func (c *Client) GetAccountAddress(account string) (btcutil.Address, error) {
+func (c *Client) GetAccountAddress(account string) (string, error) {
 	return c.GetAccountAddressAsync(account).Receive()
 }
 
