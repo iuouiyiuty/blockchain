@@ -86,6 +86,34 @@ func (r FutureGetBlockResult) Receive() (*wire.MsgBlock, error) {
 	return &msgBlock, nil
 }
 
+func (r FutureGetBlockResult) Receive4vdo() (*wire.MsgBlock4vdo, error) {
+	res, err := receiveFuture(r)
+	if err != nil {
+		return nil, err
+	}
+
+	// Unmarshal result as a string.
+	//var blockHex string
+	//err = json.Unmarshal(res, &blockHex)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//// Decode the serialized block hex to raw bytes.
+	//serializedBlock, err := hex.DecodeString(blockHex)
+	//if err != nil {
+	//	return nil, err
+	//}
+
+	// Deserialize the block and return it.
+	var msgBlock wire.MsgBlock4vdo
+	err = json.Unmarshal(res, &msgBlock)
+	if err != nil {
+		return nil, err
+	}
+	return &msgBlock, nil
+}
+
 // GetBlockAsync returns an instance of a type that can be used to get the
 // result of the RPC at some future time by invoking the Receive function on the
 // returned instance.
@@ -107,6 +135,9 @@ func (c *Client) GetBlockAsync(blockHash *chainhash.Hash) FutureGetBlockResult {
 // block instead.
 func (c *Client) GetBlock(blockHash *chainhash.Hash) (*wire.MsgBlock, error) {
 	return c.GetBlockAsync(blockHash).Receive()
+}
+func (c *Client) GetBlock4vdo(blockHash *chainhash.Hash) (*wire.MsgBlock4vdo, error) {
+	return c.GetBlockAsync(blockHash).Receive4vdo()
 }
 
 // FutureGetBlockVerboseResult is a future promise to deliver the result of a

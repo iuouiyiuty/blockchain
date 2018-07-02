@@ -666,6 +666,10 @@ func (msg *MsgTx) Deserialize(r io.Reader) error {
 	return msg.BtcDecode(r, 0, WitnessEncoding)
 }
 
+func (msg *MsgTx) Deserialize2(r io.Reader) error {
+	return nil
+}
+
 // DeserializeNoWitness decodes a transaction from r into the receiver, where
 // the transaction encoding format within r MUST NOT utilize the new
 // serialization format created to encode transaction bearing witness data
