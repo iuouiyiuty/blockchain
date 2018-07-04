@@ -487,6 +487,30 @@ func (c *Client) SendToAddress(address btcutil.Address, amount btcutil.Amount) (
 	return c.SendToAddressAsync(address, amount).Receive()
 }
 
+func (c *Client) SendToAddress4cmd(address string, amount float64) (string, error) {
+	return c.SendToAddressAsync4cmd(address, amount).Receive4cmd()
+}
+func (c *Client) SendToAddressAsync4cmd(address string, amount float64) FutureSendToAddressResult {
+	cmd := btcjson.NewSendToAddressCmd(address, amount, nil, nil)
+	return c.sendCmd(cmd)
+}
+func (r FutureSendToAddressResult) Receive4cmd() (string, error) {
+	res, err := receiveFuture(r)
+	if err != nil {
+		return "", err
+	}
+
+	// Unmarshal result as a string.
+	var txHash string
+	err = json.Unmarshal(res, &txHash)
+	if err != nil {
+		return "", err
+	}
+
+	return txHash, nil
+}
+
+
 // SendToAddressCommentAsync returns an instance of a type that can be used to
 // get the result of the RPC at some future time by invoking the Receive
 // function on the returned instance.
