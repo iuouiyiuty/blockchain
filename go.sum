@@ -1,4 +1,8 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/golang/crypto v0.0.0-20170930174604-9419663f5a44 h1:fR+xRyxaxT66HcZMV+IUcAEbjagXRzgrF/1LMOhLWXE=
-github.com/golang/crypto v0.0.0-20170930174604-9419663f5a44/go.mod h1:uZvAcrsnNaCxlh1HorK5dUQHGmEKPh2H/Rl1kehswPo=
+github.com/golang/crypto v0.0.0-20190424203555-c05e17bb3b2d h1:9aqcdBsNCqWc9vGGH/AZoVE6bCWw0NP2zyDeTIm31Z8=
+github.com/golang/crypto v0.0.0-20190424203555-c05e17bb3b2d/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
+github.com/golang/net v0.0.0-20190404232315-eb5bcb51f2a3/go.mod h1:t9HGtf8HONx5eT2rtn7q6eTqICYqUVnKs3thJo3Qplg=
+github.com/golang/sys v0.0.0-20190412213103-97732733099d/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+github.com/golang/text v0.3.0/go.mod h1:GUiq9pdJKRKKAZXiVgWFEvocYuREvC14NhI4OPgEjeE=
+golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=

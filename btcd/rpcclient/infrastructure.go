@@ -892,6 +892,11 @@ func (c *Client) sendCmd(cmd interface{}) chan *response {
 	return responseChan
 }
 
+func (c *Client) SendCmd(cmd interface{}) ([]byte, error) {
+	r := <-c.sendCmd(cmd)
+	return r.result, r.err
+}
+
 // sendCmdAndWait sends the passed command to the associated server, waits
 // for the reply, and returns the result from it.  It will return the error
 // field in the reply if there is one.
