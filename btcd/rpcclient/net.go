@@ -7,7 +7,7 @@ package rpcclient
 import (
 	"encoding/json"
 
-	"github.com/forsaken628/blockchain/btcd/btcjson"
+	"github.com/iuouiyiuty/blockchain/btcd/btcjson"
 )
 
 // AddNodeCommand enumerates the available commands that the AddNode function

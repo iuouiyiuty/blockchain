@@ -23,9 +23,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/forsaken628/blockchain/btcd/btcjson"
-	"github.com/forsaken628/blockchain/go-socks/socks"
-	"github.com/forsaken628/blockchain/websocket"
+	"github.com/iuouiyiuty/blockchain/btcd/btcjson"
+	"github.com/iuouiyiuty/blockchain/go-socks/socks"
+	"github.com/iuouiyiuty/blockchain/websocket"
 )
 
 var (

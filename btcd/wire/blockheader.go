@@ -9,7 +9,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/forsaken628/blockchain/btcd/chaincfg/chainhash"
+	"github.com/iuouiyiuty/blockchain/btcd/chaincfg/chainhash"
 )
 
 // MaxBlockHeaderPayload is the maximum number of bytes a block header can be.

@@ -7,7 +7,7 @@ package base58_test
 import (
 	"fmt"
 
-	"github.com/forsaken628/blockchain/btcutil/base58"
+	"github.com/iuouiyiuty/blockchain/btcutil/base58"
 )
 
 // This example demonstrates how to decode modified base58 encoded data.

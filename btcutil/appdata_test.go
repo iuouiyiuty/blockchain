@@ -12,7 +12,7 @@ import (
 	"testing"
 	"unicode"
 
-	"github.com/forsaken628/blockchain/btcutil"
+	"github.com/iuouiyiuty/blockchain/btcutil"
 )
 
 // TestAppDataDir tests the API for AppDataDir to ensure it gives expected

@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/forsaken628/blockchain/btcutil/base58"
+	"github.com/iuouiyiuty/blockchain/btcutil/base58"
 )
 
 func BenchmarkBase58Encode(b *testing.B) {
