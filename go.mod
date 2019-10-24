@@ -1,4 +1,4 @@
-module github.com/forsaken628/blockchain
+module github.com/iuouiyiuty/blockchain
 
 go 1.12
 
